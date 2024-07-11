@@ -10,11 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Controller  //Controler se utiliza para el modelo  MVC y RestController retorna solamente String
 @RequestMapping("/invoice")  //indica parte de la ruta
@@ -25,7 +22,7 @@ public class InvoiceController {
     private InvoiceService service;
 
     @GetMapping("/getAll") //indica el verbo http con el que realiza la request y tambien le pasamos aprte de la ruta
-    public String getAllInvoice(Model model){
+    public String getAllInvoice(Model model){ //Se puede usar un Map<String, Object> en lugar de model tambien
         model.addAttribute("message", "Bienvenido a la página de inicio");
         return "index"; // el retorno debe ser el nombre de un archivo html que se encuentre dentro de la carpeta resources/templates
     }
