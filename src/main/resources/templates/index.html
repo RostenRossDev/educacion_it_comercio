@@ -21,7 +21,7 @@
                     <a class="nav-link" href="#">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Productos</a>
+                    <a class="nav-link" th:href="@{/productos}">Productos <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Contacto</a>
@@ -76,12 +76,10 @@
     </section>
 
 
-<!--    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>-->
-<!--    <script th:src="@{/js/popper.min.js}"></script>-->
-<!--    <script th:src="@{/js/bootstrap.min.js}"></script>-->
-<!--    <script th:src="@{/js/jquery-ui.min.js}"></script>-->
-<!--    <footer th:insert="~{layout/layout :: footer}"></footer>-->
-
+    <script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/js/popper.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/jquery-ui.min.js}"></script>
     <header th:insert="~{layout/layout :: footer}"></header>
 </body>
 </html>

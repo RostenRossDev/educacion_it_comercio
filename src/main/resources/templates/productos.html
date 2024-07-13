@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <title>Productos</title>
+</head>
+<body>
+<header th:insert="~{layout/layout :: header}"></header>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Tienda de Computación</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Productos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contacto</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Header -->
+<header class="bg-primary text-white text-center py-5">
+    <h1>Bienvenido a nuestra tienda de computación</h1>
+    <p>Encuentra los mejores productos al mejor precio</p>
+</header>
+
+<!-- Lista de Productos y Formulario de Categorías -->
+<section class="container my-5">
+    <h1 class="mb-4">Lista de Productos</h1>
+
+    <!-- Desplegable de Categorías -->
+    <form method="get" action="/productos" class="form-inline mb-4">
+        <label for="category" class="mr-2">Categoría:</label>
+        <select id="category" name="categoryId" class="form-control" onchange="this.form.submit()">
+        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"
+                    th:selected="${category.id == selectedCategoryId}">Seleccione una categoría</option>
+        </select>
+    </form>
+
+    <!-- Lista de Productos -->
+    <div th:if="${products.isEmpty()}">
+        <p>No hay productos disponibles para esta categoría.</p>
+    </div>
+    <div th:unless="${products.isEmpty()}">
+        <div class="row">
+            <div th:each="product : ${products}" class="col-md-4 mb-4">
+                <div class="card product-card">
+                    <img th:src="'images/' + @{${product.image}}" alt="Imagen del Producto" class="card-img-top" >
+                    <div class="card-body">
+                        <h2 class="card-title h5" th:text="${product.name}">Nombre del Producto</h2>
+                        <p class="card-text">$<span th:text="${product.price}">Precio</span></p>
+                        <a href="#" class="btn btn-primary">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery-ui.min.js}"></script>
+<header th:insert="~{layout/layout :: footer}"></header>
+
+<script>
+    function updateCategoryText() {
+        var categorySelect = document.getElementById("category");
+        console.log(categorySelect);
+        var selectedCategoryText = categorySelect.options[categorySelect.selectedIndex].text;
+        document.getElementById("selectedCategoryText").innerText = selectedCategoryText;
+    }
+
+    // Actualizar el texto de la categoría seleccionada al cargar la página
+    document.addEventListener("DOMContentLoaded", function() {
+        updateCategoryText();
+    });
+</script>
+
+</body>
+</html>
