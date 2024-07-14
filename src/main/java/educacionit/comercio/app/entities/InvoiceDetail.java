@@ -32,7 +32,7 @@ public class InvoiceDetail implements Serializable {
 
     private Integer quantity;
 
-    public Double getDetailTotal(){
+    public Double detailTotal(){
         return this.product.getPrice() * quantity;
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -21,19 +22,21 @@ public class InvoiceController {
     @Qualifier(value = "implementacionMejorada")
     private InvoiceService service;
 
-    @GetMapping("/getAll") //indica el verbo http con el que realiza la request y tambien le pasamos aprte de la ruta
+    @GetMapping("/all") //indica el verbo http con el que realiza la request y tambien le pasamos aprte de la ruta
     public String getAllInvoice(Model model){ //Se puede usar un Map<String, Object> en lugar de model tambien
-        model.addAttribute("message", "Bienvenido a la página de inicio");
-        return "index"; // el retorno debe ser el nombre de un archivo html que se encuentre dentro de la carpeta resources/templates
+        List<Invoice> invoices = service.invoices();
+        model.addAttribute("invoices", invoices);
+        return "invoiceList"; // el retorno debe ser el nombre de un archivo html que se encuentre dentro de la carpeta resources/templates
     }
 
-    @GetMapping("/getOne")
-    public String findById(Model model, Long id){
-        service.findById(id);
-        return "index";
+    @GetMapping("/{id}")
+    public String findById(@PathVariable("id") Long id, Model model){
+        Invoice invoice = service.findById(id);
+        model.addAttribute("invoice", invoice);
+        return "invoice";
     }
 
-    @DeleteMapping("/deleteOne")
+    @DeleteMapping("/id")
     public String deleteById(Model model, Long id){
         service.deleteById(id);
         List<Invoice> invoices = service.invoices();

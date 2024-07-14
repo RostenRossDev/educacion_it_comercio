@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <title>Productos</title>
+</head>
+<body>
+<header th:insert="~{layout/layout :: header}"></header>
+<!-- Header -->
+<header class="bg-primary text-white text-center py-5">
+    <h1>Facturas</h1>
+</header>
+
+<!-- Lista de Productos y Formulario de Categorías -->
+<section class="container my-5">
+    <h1 class="mb-4">Factura</h1>
+
+    <!-- Información del usuario -->
+    <div class="card mb-4">
+        <div class="card-body">
+<!--            <h5 class="card-title">Nombre del Usuario: <span th:text="${user.name}">John Doe</span></h5>-->
+            <h5 class="card-title">Nombre del Usuario: <span >Carlos</span></h5>
+        </div>
+    </div>
+
+    <!-- Items de la factura -->
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="thead-light">
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${invoice.details}">
+                <td th:text="${item.product.name}">Nombre del Producto</td>
+                <td th:text="${item.quantity}">1</td>
+                <td th:text="${item.product.price}">100.00</td>
+                <td th:text="${item.detailTotal}">100.00</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <th colspan="3" class="text-right">Total Final</th>
+                <th th:text="${invoice.total}">100.00</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</section>
+<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery-ui.min.js}"></script>
+<header th:insert="~{layout/layout :: footer}"></header>
+
+<script>
+    function updateCategoryText() {
+        var categorySelect = document.getElementById("category");
+        console.log(categorySelect);
+        var selectedCategoryText = categorySelect.options[categorySelect.selectedIndex].text;
+        document.getElementById("selectedCategoryText").innerText = selectedCategoryText;
+    }
+
+    // Actualizar el texto de la categoría seleccionada al cargar la página
+    document.addEventListener("DOMContentLoaded", function() {
+        updateCategoryText();
+    });
+</script>
+
+</body>
+</html>

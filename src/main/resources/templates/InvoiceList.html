@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <title>Productos</title>
+</head>
+<body>
+<header th:insert="~{layout/layout :: header}"></header>
+<!-- Header -->
+<header class="bg-primary text-white text-center py-5">
+    <h1>Facturas</h1>
+</header>
+
+<!-- Lista de Productos y Formulario de Categorías -->
+<section class="container my-5">
+    <table class="table table-bordered">
+        <thead class="thead-light">
+        <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Ver</th>
+            <th>Editar</th>
+            <th>Borrar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="invoice : ${invoices}">
+            <td th:text="${invoice.id}">1</td>
+<!--            <td th:text="${invoice.user}">User</td>-->
+            <td>Carlos</td>
+            <td>
+                <a th:href="@{/invoice/{id}(id=${invoice.id})}" class="btn btn-info">Ver</a>
+            </td>
+            <td>
+                <a th:href="@{/invoice/edit/{id}(id=${invoice.id})}" class="btn btn-warning">Editar</a>
+            </td>
+            <td>
+                <a th:href="@{/invoice/delete/{id}(id=${invoice.id})}" class="btn btn-danger">Borrar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery-ui.min.js}"></script>
+<header th:insert="~{layout/layout :: footer}"></header>
+
+<script>
+    function updateCategoryText() {
+        var categorySelect = document.getElementById("category");
+        console.log(categorySelect);
+        var selectedCategoryText = categorySelect.options[categorySelect.selectedIndex].text;
+        document.getElementById("selectedCategoryText").innerText = selectedCategoryText;
+    }
+
+    // Actualizar el texto de la categoría seleccionada al cargar la página
+    document.addEventListener("DOMContentLoaded", function() {
+        updateCategoryText();
+    });
+</script>
+
+</body>
+</html>
