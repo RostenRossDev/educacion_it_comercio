@@ -22,8 +22,9 @@
     <form method="get" action="/productos" class="form-inline mb-4">
         <label for="category" class="mr-2">Categoría:</label>
         <select id="category" name="categoryId" class="form-control" onchange="this.form.submit()">
-        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"
-                    th:selected="${category.id == selectedCategoryId}">Seleccione una categoría</option>
+            <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"
+                        th:selected="${category.id == selectedCategoryId}">Seleccione una categoría
+            </option>
         </select>
     </form>
 
@@ -50,7 +51,7 @@
 <script th:src="@{/js/popper.min.js}"></script>
 <script th:src="@{/js/bootstrap.min.js}"></script>
 <script th:src="@{/js/jquery-ui.min.js}"></script>
-<header th:insert="~{layout/layout :: footer}"></header>
+<footer th:insert="~{layout/layout :: footer}"></footer>
 
 <script>
     function updateCategoryText() {

@@ -17,7 +17,7 @@ import java.util.List;
 
 @Slf4j
 @Controller
-@RequestMapping("/productos")
+    @RequestMapping("/productos")
 public class ProductsController {
 
     @Autowired
@@ -29,22 +29,10 @@ public class ProductsController {
     @GetMapping
     public String getProducts(@RequestParam(value = "categoryId", required = false) Long categoryId, Model model) {
         List<Category> categories = categoryService.findAllCategories();
-        List<Product> products = productService.findAllProducts();
-
-        if(categoryId != null && categoryId > 0){
-            List<Product> productsFiltered = new ArrayList<>();
-            products.forEach(item -> {
-                if(item.getCategory().getId().equals(categoryId)){
-                    productsFiltered.add(item);
-                }
-            });
-            products = productsFiltered;
-        }
-        products.forEach(item -> log.info(item.toString()));
+        List<Product> products = productService.productFilterd(categoryId);
         model.addAttribute("categories", categories);
         model.addAttribute("products", products);
         model.addAttribute("selectedCategoryId", categoryId);
-
         return "productos";
     }
 }

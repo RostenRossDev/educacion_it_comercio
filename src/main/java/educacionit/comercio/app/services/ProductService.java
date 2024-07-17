@@ -8,4 +8,5 @@ import java.util.List;
 public interface ProductService {
      List<Product> findAllProducts();
 
+     List<Product> productFilterd(Long categoryId);
 }

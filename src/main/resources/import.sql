@@ -4,7 +4,6 @@ INSERT INTO CATEGORIES (id, name) values (2, 'gabinete');
 INSERT INTO CATEGORIES (id, name) values (3, 'laptop');
 INSERT INTO CATEGORIES (id, name) values (4, 'teclado');
 
-
 --Productos
 INSERT INTO PRODUCTS (id, name, price, image, category_id) values (1, 'Mouse Dragon xyz', 10000, 'mouse1.jpg', 1);
 INSERT INTO PRODUCTS (id, name, price, image, category_id) values (2, 'Mouse Dragon buble', 200000, 'mouse2.jpg', 1);
