@@ -110,17 +110,17 @@ public class LoggAspect {
 
     //Esta aspecto se ejecuta luego de que las clases observadas lancen una exception
     @AfterThrowing(pointcut = "execution(* educacionit.comercio.app.services.*.*(..))", throwing = "error")
-    public void logAfterThrowing(Throwable error, JoinPoint joinPoint) {
-        log.error("Se lanzo la excepcion: " + error + ". Persistiendo en la tabla de registro de errores.");
-        String controllerName = joinPoint.getTarget().getClass().getSimpleName();
-        String methodName = joinPoint.getSignature().getName();
+    public void logAfterThrowing(RuntimeException  error) {
+        log.info("Se lanzo la excepcion: " + error + ". Persistiendo en la tabla de registro de errores.");
+        //String controllerName = joinPoint.getTarget().getClass().getSimpleName();
+        //String methodName = joinPoint.getSignature().getName();
         LocalDateTime date = LocalDateTime.now();
 
         RecordException recordException = new RecordException();
         recordException.setException(error.toString());
         recordException.setMessage(error.getMessage());
-        recordException.setMethod(methodName);
-        recordException.setController(controllerName);
+        //recordException.setMethod(methodName);
+        //recordException.setController(controllerName);
         recordException.setDate(date);
         recordExceptionService.save(recordException);
         //Aca guardariamos el error ocurrido en la db si tuvieramos una.
@@ -130,7 +130,7 @@ public class LoggAspect {
 //############################## antes y despues del metodo
 
     //El arround nos permiete capturar operar antes de la ejecucion del metodo, manipular el retorno y operar despues de la ejecucion del metodo
-    @Around("execution(java.util.List<educacionit.comercio.app.entities.Product> educacionit.comercio.app.services.*.*(..))")
+   // @Around("execution(java.util.List<educacionit.comercio.app.entities.Product> educacionit.comercio.app.services.*.*(..))")
     public Object logAndModifyReturn(ProceedingJoinPoint joinPoint) throws Throwable {
         log.info("Antes del metodo: {}", joinPoint.getSignature().getName());
 

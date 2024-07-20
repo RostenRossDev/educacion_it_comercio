@@ -35,9 +35,9 @@ public class ProductServiceImpl implements ProductService {
         log.info("El metdo findById se ejecuto : " + date);
         List<Product> products = new ArrayList<>();
         try{
-            products = findAllProducts();
+                products = findAllProducts();
         }catch (RuntimeException e){
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         List<Product> productsFiltered = new ArrayList<>();
         if(categoryId != null && categoryId > 0){
