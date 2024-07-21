@@ -5,6 +5,8 @@ import educacionit.comercio.app.entities.Product;
 import educacionit.comercio.app.services.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,6 +24,8 @@ public class InvoiceController {
     @Qualifier(value = "implementacionMejorada")
     private InvoiceService service;
 
+    //@Secured("ROLE_ADMIN")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/all") //indica el verbo http con el que realiza la request y tambien le pasamos aprte de la ruta
     public String getAllInvoice(Model model){ //Se puede usar un Map<String, Object> en lugar de model tambien
         List<Invoice> invoices = service.invoices();
