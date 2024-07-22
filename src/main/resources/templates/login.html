@@ -30,6 +30,10 @@
                     <input type="submit" class="btn btn-lg btn-primary btn-block"
                            th:value="LOGIN" id="submitButton" />
                 </div>
+
+                <div>
+                    <input type="checkbox" value="recordarme" name="remember-me">
+                </div>
             </form>
             <div class="alert alert-danger" th:if="${error != null}">
                 <p th:error="${error}"></p>

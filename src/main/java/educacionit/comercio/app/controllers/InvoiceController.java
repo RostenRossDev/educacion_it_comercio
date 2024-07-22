@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,7 +26,6 @@ public class InvoiceController {
     @Qualifier(value = "implementacionMejorada")
     private InvoiceService service;
 
-    //@Secured("ROLE_ADMIN")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/all") //indica el verbo http con el que realiza la request y tambien le pasamos aprte de la ruta
     public String getAllInvoice(Model model){ //Se puede usar un Map<String, Object> en lugar de model tambien
@@ -33,19 +34,26 @@ public class InvoiceController {
         return "invoiceList"; // el retorno debe ser el nombre de un archivo html que se encuentre dentro de la carpeta resources/templates
     }
 
+    @Secured({"ROLE_ADMIN", "ROLE_USER"})
     @GetMapping("/{id}")
     public String findById(@PathVariable("id") Long id, Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
         Invoice invoice = service.findById(id);
+        if(invoice==null) {
+            return "redirect:/invoice/all";
+        }
         model.addAttribute("invoice", invoice);
         return "invoice";
     }
 
-    @DeleteMapping("/id")
-    public String deleteById(Model model, Long id){
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/delete/{id}")
+    public String deleteById(@PathVariable(value="id")Long id, Model model){
         service.deleteById(id);
         List<Invoice> invoices = service.invoices();
         model.addAttribute("invoices", invoices);
-        return "index";
+        return "redirect:/invoice/all";
     }
 
 
