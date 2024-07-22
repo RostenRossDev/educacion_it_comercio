@@ -25,8 +25,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findAllProducts() {
-        throw  new RuntimeException("Error al buscar los productos - Prueba", new Exception());
-//        return repository.findAll();
+      //  throw  new RuntimeException("Error al buscar los productos - Prueba", new Exception());
+        return repository.findAll();
     }
 
     @Override

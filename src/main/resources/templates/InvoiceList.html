@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <header th:insert="~{layout/layout :: head}"></header>
     <title>Productos</title>
 </head>
 <body>
@@ -43,10 +43,6 @@
         </tbody>
     </table>
 </section>
-<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
-<script th:src="@{/js/popper.min.js}"></script>
-<script th:src="@{/js/bootstrap.min.js}"></script>
-<script th:src="@{/js/jquery-ui.min.js}"></script>
 <header th:insert="~{layout/layout :: footer}"></header>
 
 <script>
