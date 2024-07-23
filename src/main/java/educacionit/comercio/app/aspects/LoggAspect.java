@@ -60,7 +60,8 @@ public class LoggAspect {
         interaction.setMethod(methodName);
         interaction.setParameters(Arrays.toString(args));
         interaction.setDate(date);
-        interactionService.save(interaction);
+        log.info("Interaction: " + interaction);
+        //interactionService.save(interaction);
         log.info("Argumentos del método: " + Arrays.toString(args));
         log.info("Se accedio al Controlador: " + controllerName + ", Metodo: " + methodName + ", el la fecha: " + dateStr);
     }
