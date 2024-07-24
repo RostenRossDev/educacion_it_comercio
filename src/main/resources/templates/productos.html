@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.com/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -42,6 +43,9 @@
                         <h2 class="card-title h5" th:text="${product.name}">Nombre del Producto</h2>
                         <p class="card-text">$<span th:text="${product.price}">Precio</span></p>
                         <a href="#" class="btn btn-primary">Comprar</a>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')" >
+                            <a class="btn btn-primary btn-xs" th:href="@{/productos/form/} + ${product.id}" th:text="'Editar'"></a>
+                        </td>
                     </div>
                 </div>
             </div>

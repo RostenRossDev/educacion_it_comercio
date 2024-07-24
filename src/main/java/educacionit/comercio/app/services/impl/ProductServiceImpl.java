@@ -22,6 +22,10 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRepository repository;
 
+    @Override
+    public Product save(Product product){
+        return repository.save(product);
+    }
 
     @Override
     public List<Product> findAllProducts() {
@@ -50,5 +54,10 @@ public class ProductServiceImpl implements ProductService {
             productsFiltered.addAll(products);
         }
         return productsFiltered;
+    }
+
+    @Override
+    public Product findById(Long id){
+        return repository.findById(id).orElse(null);
     }
 }
