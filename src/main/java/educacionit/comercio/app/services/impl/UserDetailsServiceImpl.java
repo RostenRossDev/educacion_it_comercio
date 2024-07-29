@@ -1,8 +1,8 @@
 package educacionit.comercio.app.services.impl;
 
-import educacionit.comercio.app.entities.CustomUser;
-import educacionit.comercio.app.entities.Role;
-import educacionit.comercio.app.repositories.UserRepository;
+import educacionit.comercio.app.entities.basedos.CustomUser;
+import educacionit.comercio.app.entities.basedos.Role;
+import educacionit.comercio.app.repositories.basedos.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;

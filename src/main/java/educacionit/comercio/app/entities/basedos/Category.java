@@ -1,11 +1,9 @@
-package educacionit.comercio.app.entities;
+package educacionit.comercio.app.entities.basedos;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Set;
 
 @Setter
 @Getter
@@ -14,8 +12,8 @@ import java.util.Set;
 @ToString
 //@Data
 @Entity
-@Table(name="products")
-public class Product implements Serializable {
+@Table(name="categories", schema = "educacionit")
+public class Category implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -24,11 +22,4 @@ public class Product implements Serializable {
 
     private String name;
 
-    private Double price;
-
-    private String image;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-    private Category category;
 }

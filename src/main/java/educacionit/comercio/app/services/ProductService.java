@@ -1,7 +1,6 @@
 package educacionit.comercio.app.services;
 
-import educacionit.comercio.app.entities.Category;
-import educacionit.comercio.app.entities.Product;
+import educacionit.comercio.app.entities.basedos.Product;
 
 import java.util.List;
 

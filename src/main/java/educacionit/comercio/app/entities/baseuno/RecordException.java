@@ -1,4 +1,4 @@
-package educacionit.comercio.app.entities;
+package educacionit.comercio.app.entities.baseuno;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @ToString
 //@Data
 @Entity
-@Table(name="LOG_EXCEPTION")
+@Table(name="LOG_EXCEPTION", schema = "educacionit")
 public class RecordException implements Serializable {
     private static final long serialVersionUID = 1L;
 

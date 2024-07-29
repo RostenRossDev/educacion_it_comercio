@@ -1,4 +1,4 @@
-package educacionit.comercio.app.entities;
+package educacionit.comercio.app.entities.basedos;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,7 +13,7 @@ import java.util.List;
 @ToString
 //@Data
 @Entity
-@Table(name="users")
+@Table(name="users", schema = "educacionit")
 public class CustomUser implements Serializable {
     private static final long serialVersionUID = 1L;
 

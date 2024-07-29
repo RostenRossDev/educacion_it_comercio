@@ -1,11 +1,10 @@
-package educacionit.comercio.app.entities;
+package educacionit.comercio.app.entities.baseuno;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Setter
 @Getter
@@ -14,7 +13,7 @@ import java.util.Date;
 @ToString
 //@Data
 @Entity
-@Table(name="LOG_REGISTRI")
+@Table(name="LOG_REGISTRI", schema = "educacionit")
 public class RecordInteraction implements Serializable {
     private static final long serialVersionUID = 1L;
 

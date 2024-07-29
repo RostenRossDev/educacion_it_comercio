@@ -1,9 +1,8 @@
-package educacionit.comercio.app.entities;
+package educacionit.comercio.app.entities.basedos;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -13,7 +12,7 @@ import java.util.List;
 @ToString
 //@Data
 @Entity
-@Table(name="INVOICE")
+@Table(name="INVOICE", schema = "educacionit")
 public class Invoice {
 
     @Id

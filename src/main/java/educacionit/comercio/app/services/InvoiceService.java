@@ -1,6 +1,6 @@
 package educacionit.comercio.app.services;
 
-import educacionit.comercio.app.entities.Invoice;
+import educacionit.comercio.app.entities.basedos.Invoice;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 //package educacionit.comercio.app.services.impl;
 //
-//import educacionit.comercio.app.entities.Invoice;
+//import educacionit.comercio.app.entities.basedos.Invoice;
 //import educacionit.comercio.app.services.InvoiceService;
 //import org.springframework.stereotype.Service;
 //

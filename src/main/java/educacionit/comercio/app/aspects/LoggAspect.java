@@ -1,8 +1,8 @@
 package educacionit.comercio.app.aspects;
 
-import educacionit.comercio.app.entities.Product;
-import educacionit.comercio.app.entities.RecordException;
-import educacionit.comercio.app.entities.RecordInteraction;
+import educacionit.comercio.app.entities.basedos.Product;
+import educacionit.comercio.app.entities.baseuno.RecordException;
+import educacionit.comercio.app.entities.baseuno.RecordInteraction;
 import educacionit.comercio.app.services.RecordExceptionService;
 import educacionit.comercio.app.services.impl.InteractionServiceImpl;
 import lombok.extern.log4j.Log4j2;
@@ -15,8 +15,6 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @Log4j2
@@ -100,7 +98,7 @@ public class LoggAspect {
 
 
     //Este aspecto se ejecuta despues de que el metdo se haya ejecutado con exito y retornado algo (solo para metodos que retornan cosas)
-    @AfterReturning(pointcut = "execution(java.util.List<educacionit.comercio.app.entities.Product> educacionit.comercio.app.services.*.*(..))", returning = "result")
+    @AfterReturning(pointcut = "execution(java.util.List<educacionit.comercio.app.entities.basedos.Product> educacionit.comercio.app.services.*.*(..))", returning = "result")
     public void logAfterReturning(Object result) {
 
         log.info("######## imprimiendo lisa de productos despues de que se ejecuto y retorno el resultado ######");
@@ -131,7 +129,7 @@ public class LoggAspect {
 //############################## antes y despues del metodo
 
     //El arround nos permiete capturar operar antes de la ejecucion del metodo, manipular el retorno y operar despues de la ejecucion del metodo
-   // @Around("execution(java.util.List<educacionit.comercio.app.entities.Product> educacionit.comercio.app.services.*.*(..))")
+   // @Around("execution(java.util.List<educacionit.comercio.app.entities.basedos.Product> educacionit.comercio.app.services.*.*(..))")
     public Object logAndModifyReturn(ProceedingJoinPoint joinPoint) throws Throwable {
         log.info("Antes del metodo: {}", joinPoint.getSignature().getName());
 

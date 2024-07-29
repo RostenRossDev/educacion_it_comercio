@@ -1,4 +1,4 @@
-package educacionit.comercio.app.entities;
+package educacionit.comercio.app.entities.basedos;
 
 import jakarta.persistence.*;
 
@@ -13,7 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 //@Data
 @Entity
-@Table(name="invoice_details")
+@Table(name="invoice_details", schema = "educacionit")
 public class InvoiceDetail implements Serializable {
     private static final long serialVersionUID=1;
 

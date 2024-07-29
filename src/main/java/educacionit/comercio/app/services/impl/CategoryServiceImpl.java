@@ -1,10 +1,9 @@
 package educacionit.comercio.app.services.impl;
 
-import educacionit.comercio.app.entities.Category;
-import educacionit.comercio.app.repositories.CategoryRepository;
+import educacionit.comercio.app.entities.basedos.Category;
+import educacionit.comercio.app.repositories.basedos.CategoryRepository;
 import educacionit.comercio.app.services.CategoryService;
 import lombok.extern.log4j.Log4j2;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

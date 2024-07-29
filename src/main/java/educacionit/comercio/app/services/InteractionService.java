@@ -1,9 +1,6 @@
 package educacionit.comercio.app.services;
 
-import educacionit.comercio.app.entities.Product;
-import educacionit.comercio.app.entities.RecordInteraction;
-
-import java.util.List;
+import educacionit.comercio.app.entities.baseuno.RecordInteraction;
 
 public interface InteractionService {
 

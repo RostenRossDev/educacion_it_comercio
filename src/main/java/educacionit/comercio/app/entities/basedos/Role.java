@@ -1,4 +1,4 @@
-package educacionit.comercio.app.entities;
+package educacionit.comercio.app.entities.basedos;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,7 +11,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="authorities", uniqueConstraints= {@UniqueConstraint(columnNames= {"user_id","authority"})})
+@Table(name="authorities", uniqueConstraints= {@UniqueConstraint(columnNames= {"user_id","authority"})}, schema = "educacionit")
 public class Role implements Serializable {
     private static final long serialVersionUID = 1L;
 
